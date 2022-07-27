@@ -41,6 +41,10 @@ const Ping = async(ip, name, state) => {
     // WARNING: -i 2 argument may not work in other platform like windows
     const res = await ping.promise.probe(ip).then(e => {
         const result = [`${name}, ${e.host}, ${e.alive}`];
+        Conn.query(`UPDATE notifications_status SET online_status = '${e.alive}', online_last_status ='${e.alive}' WHERE equip_ip = '${e.host}'`, (er, f) => {
+            if (er) console.log(`:::Erro Update ${er}`);
+            else console.log(f)
+        })
         log.logs(result, today, writeStream);
 
     });

@@ -1,7 +1,7 @@
 module.exports = {
-    DB_HOST: '10.22.100.11',
-    DB_USER: 'service_storm',
-    DB_PASS: 'trac3viabras1l',
+    DB_HOST: 'localhost',
+    DB_USER: 'root',
+    DB_PASS: 'trcvbr18',
     DB: 'tracevia_app',
     port: 7272,
     check: true
