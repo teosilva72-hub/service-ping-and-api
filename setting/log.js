@@ -1,7 +1,6 @@
 const log = async(filds, today, writeStream) => {
     try {
         const x = json(filds);
-        console.log(x)
         let xml = `${x}`;
         xml = JSON.stringify(xml)
         writeStream.write(xml + ',');
@@ -11,7 +10,7 @@ const log = async(filds, today, writeStream) => {
     }
 }
 const json = filds => {
-    return JSON.parse(JSON.stringify(filds));
+    return JSON.stringify(filds);
 }
 
 module.exports = {

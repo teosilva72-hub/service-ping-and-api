@@ -5,9 +5,6 @@ const log = require('./log');
 const fs = require('fs');
 const date = new Date;
 const today = new Date(date);
-const status = require('./status');
-const { api } = require('./status');
-const e = require('express');
 
 const writeStream = fs.createWriteStream(`./log/log${today.getDate()}_${today.getMonth()+1}.txt`);
 
@@ -15,7 +12,6 @@ async function idGet(filds, constraint) {
     try {
         Conn.query(`SELECT ${filds} FROM ${constraint}`, (e, result) => {
             adressEquip(JSON.parse(JSON.stringify(result)));
-            //res.then(e => console.log(e))
         });
         //Conn.end();
     } catch (e) {
@@ -61,7 +57,13 @@ const Ping = async(ip, name, state, id) => {
         const result = [`${id},${name}, ${ip}, ${statusOff}, ${statusOn}`];
         filds[0] = result;
         log.logs(result, today, writeStream);
-        Conn.query(`UPDATE notifications_status SET online_status = '${statusOn}', online_last_status = '${statusOff}' WHERE notifications_id = '${id}'`);
+        Conn.query(`UPDATE notifications_status SET
+            online_status = '${statusOn}',
+            online_last_status = '${statusOff}'
+            WHERE notifications_id = '${id}'
+        `, (error, result) => {
+            if (error) console.log('Error Update notification_status\n' + error);
+        });
         return filds
     });
     //return filds;
