@@ -5,11 +5,12 @@ const router = express.Router();
 Conn.query(`SELECT equip_name, equip_ip, online_status, online_last_status FROM notifications_status`, (e, data) => {
     router.get('/', (req, res) => {
         res.json(data);
-        console.log(JSON.parse(data))
+        //console.log(JSON.parse(data))
     })
-})
+
+});
 const api = async(filds) => {
-    console.log(filds);
+    //console.log(filds);
 
 }
 

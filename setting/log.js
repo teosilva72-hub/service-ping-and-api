@@ -1,10 +1,11 @@
 const log = async(filds, today, writeStream) => {
     try {
         const x = json(filds);
-        for (var i = 0; i < x.length; i++) {
-            const html = ` ${filds}`;
-            writeStream.write(`${html}\n`);
-        }
+        console.log(x)
+        let xml = `${x}`;
+        xml = JSON.stringify(xml)
+        writeStream.write(xml + ',');
+
     } catch (e) {
         console.log(e)
     }
