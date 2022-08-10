@@ -7,9 +7,9 @@ const fs = require('fs');
 Server(env.check);
 const date = new Date;
 const today = new Date(date);
-fs.readFile('./arquivos/linguagens.txt', 'utf-8', function (err, data) {
-    if(err) throw err;
-    console.log(data);
+fs.readFile('./log/log10_8.txt', 'utf-8', function(err, data) {
+    if (err) throw err;
+    //console.log(data);
 });
 
 
