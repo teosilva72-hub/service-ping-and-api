@@ -64,6 +64,7 @@ const Ping = async(ip, name, state, id) => {
         `, (error, result) => {
             if (error) console.log('Error Update notification_status\n' + error);
         });
+        //Conn.end();
         return filds
     });
     //return filds;
